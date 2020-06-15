@@ -30,7 +30,7 @@ const usage = commandLineUsage([
   {
     header: "Javascript to JSON",
     content:
-      "Convert Javascript objects to the JSON format using {bold Jalosi} style format. ({underline https://github.com/gardhr/jalosi})",
+      "Convert Javascript objects to JSON using {bold Jalosi} style format. ({underline https://github.com/gardhr/jalosi})",
   },
   {
     header: "Options",
