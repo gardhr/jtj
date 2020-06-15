@@ -1,6 +1,6 @@
 {
  "name": "jtj",
- "version": "0.0.11",
+ "version": "1.0.0",
  "description": "Javascript to JSON",
  "main": "jtj.js",
  "repository": {
@@ -13,13 +13,13 @@
  "bugs": {
   "url": "https://github.com/gardhr/jtj/issues"
  },
-"dependencies": {
-  "jalosi": "git+https://github.com/gardhr/jalosi.git", 
-  "command-line-args": "git+https://github.com/75lb/command-line-args.git", 
+ "dependencies": {
+  "jalosi": "git+https://github.com/gardhr/jalosi.git",
+  "command-line-args": "git+https://github.com/75lb/command-line-args.git",
   "command-line-usage": "git+https://github.com/75lb/command-line-usage.git"
-  }, 
+ },
  "keywords": [
   "json alternative"
- ], 
+ ],
  "bin": "./jtj.js"
 }

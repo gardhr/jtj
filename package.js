@@ -1,16 +1,25 @@
 {
- name : "jalosi",
- version: "0.0.11",
- description: "JAvascript LOading SImplified",
- main: "jalosi.js",
+ name: "jtj",
+ version: "1.0.0",
+ description: "Javascript to JSON",
+ main: "jtj.js",
  repository: {
   type: "git",
-  url: "git+https://github.com/gardhr/jalosi.git"
+  url: "git+https://github.com/gardhr/jtj.git"
  },
- homepage: "https://github.com/gardhr/jalosi#readme",
+ homepage: "https://github.com/gardhr/jtj#readme",
  author: "Gardhr",
  license: "MIT",
  bugs: {
-  url: "https://github.com/gardhr/jalosi/issues"
- }
+  url: "https://github.com/gardhr/jtj/issues"
+ },
+dependencies: {
+  "jalosi": "git+https://github.com/gardhr/jalosi.git", 
+  "command-line-args": "git+https://github.com/75lb/command-line-args.git", 
+  "command-line-usage": "git+https://github.com/75lb/command-line-usage.git"
+  }, 
+ keywords: [
+  "json alternative"
+ ], 
+ bin: "./jtj.js"
 }

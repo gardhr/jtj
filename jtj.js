@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const { statSync } = require("fs");
-const { baseName } = require("path");
+const { statSync, writeFileSync } = require("fs");
+const { extname } = require("path");
 const jalosi = require("jalosi");
 const commandLineArgs = require("command-line-args");
 const commandLineUsage = require("command-line-usage");
@@ -17,13 +17,18 @@ const optionList = [
   {
     name: "input",
     alias: "i",
-    description: "Input files to process",
+    description: "Input files to process (default: package.js)",
     type: String,
     multiple: true,
     defaultOption: true,
     typeLabel: "{underline file} ...",
   },
-  { name: "write", alias: "w", description: "Overwite output file (otherwise written to standard output)", type: Boolean }
+  {
+    name: "write",
+    alias: "w",
+    description: "Overwite file (default: print to standard output)",
+    type: Boolean,
+  },
 ];
 
 const usage = commandLineUsage([
@@ -41,24 +46,40 @@ const usage = commandLineUsage([
   },
 ]);
 
-var options = commandLineArgs(optionList);
-let input = options.input;
-if (!input) return print(usage);
-
-function fileExists(fileName) {
-  try {
-    return statSync(fileName).isFile();
-  } catch (notFound) {
-    return false;
+try {
+  var options = commandLineArgs(optionList);
+  let input = options.input;
+  if (!input) input = ["package"];
+  function fileExists(fileName) {
+    try {
+      return statSync(fileName).isFile();
+    } catch (notFound) {
+      return false;
+    }
   }
-}
-
-for (let idx = 0, imx = input.length; idx < imx; ++idx) {
-  let fileName = input[idx];
-  if (!fileExists(fileName)) fileName += ".js";
-  statSync(fileName);
-  let js = jalosi(fileName);
-  let json = JSON.stringify(js, null, " ");
-  if (!options.write) print(json);
-  else writeFileSync(baseName(fileName) + ".json", json);
+  for (let idx = 0, imx = input.length; idx < imx; ++idx) {
+    let fileName = input[idx];
+    if (!fileExists(fileName)) fileName += ".js";
+    statSync(fileName);
+    let js = jalosi(fileName);
+    let json = JSON.stringify(js, null, " ");
+    if (!options.write) print(json);
+    else {
+      let extension = extname(fileName);
+      let length = extension.length;
+      let rootName = length ? fileName.slice(0, -length) : fileName;
+      let outputFile = rootName + ".json";
+      let modeMessage = fileExists(outputFile) ? "Updated" : "Created";
+      let messageText = modeMessage + " file " + outputFile;
+      try {
+        writeFileSync(outputFile, json);
+        print(messageText);
+      } catch (error) {
+        print(error);
+      }
+    }
+  }
+} catch (error) {
+  print(error);
+  print(usage);
 }
