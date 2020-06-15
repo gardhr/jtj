@@ -3,4 +3,4 @@
 
 # JTJ
 
-Convert Javascript objects to JSON using {bold Jalosi} style format. ({underline https://github.com/gardhr/jalosi})
+Convert Javascript objects to JSON using Jalosi style format. (https://github.com/gardhr/jalosi)
