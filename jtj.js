@@ -59,8 +59,6 @@ try {
   }
   for (let idx = 0, imx = input.length; idx < imx; ++idx) {
     let fileName = input[idx];
-    if (!fileExists(fileName)) fileName += ".js";
-    statSync(fileName);
     let js = jalosi(fileName);
     let json = JSON.stringify(js, null, " ");
     if (!options.write) print(json);
@@ -69,7 +67,12 @@ try {
       let length = extension.length;
       let rootName = length ? fileName.slice(0, -length) : fileName;
       let outputFile = rootName + ".json";
-      let modeMessage = fileExists(outputFile) ? "Updated" : "Created";
+      let modeMessage = "Updated";
+      try {
+        statSync(outputFile);
+      } catch (notFound) {
+        modeMessage = "Created";
+      }
       let messageText = modeMessage + " file " + outputFile;
       try {
         writeFileSync(outputFile, json);
@@ -80,6 +83,6 @@ try {
     }
   }
 } catch (error) {
-  print(error);
+  console.error(error);
   print(usage);
 }
