@@ -1,6 +1,6 @@
 {
  name: "jtj",
- version: "1.1.0",
+ version: "1.1.1",
  modified: new Date(),
  description: "Javascript to JSON",
  main: "jtj.js",
