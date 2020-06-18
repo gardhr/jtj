@@ -50,13 +50,6 @@ try {
   var options = commandLineArgs(optionList);
   let input = options.input;
   if (!input) input = ["package"];
-  function fileExists(fileName) {
-    try {
-      return statSync(fileName).isFile();
-    } catch (notFound) {
-      return false;
-    }
-  }
   for (let idx = 0, imx = input.length; idx < imx; ++idx) {
     let fileName = input[idx];
     let js = jalosi(fileName);
