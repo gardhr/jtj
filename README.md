@@ -1,5 +1,5 @@
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://badge.fury.io/js/jtj.svg)](https://badge.fury.io/js/jtj)
+[![npm version](https://badge.fury.io/js/jtj.png)](https://badge.fury.io/js/jtj)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.png)](https://opensource.org/licenses/MIT)
 
 # JTJ
 
