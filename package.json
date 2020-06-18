@@ -1,7 +1,7 @@
 {
  "name": "jtj",
- "version": "1.1.1",
- "modified": "2020-06-17T02:25:29.595Z",
+ "version": "1.1.2",
+ "modified": "2020-06-18T08:34:04.548Z",
  "description": "Javascript to JSON",
  "main": "jtj.js",
  "repository": {
